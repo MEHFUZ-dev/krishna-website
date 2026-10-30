@@ -1,0 +1,574 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STICKVERSE | Your World. Your Stickers.</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #101522;
+            color: #F8FAFC;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+        }
+
+        :root {
+            --navy: #101522;
+            --card: #1A2233;
+            --lavender: #A78BFA;
+            --mint: #34D399;
+            --white: #F8FAFC;
+            --muted: #A6ADBB;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            border-bottom: 1px solid #283044;
+            position: sticky;
+            top: 0;
+            background: rgba(16, 21, 34, 0.95);
+            z-index: 10;
+            backdrop-filter: blur(12px);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            color: var(--lavender);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--white);
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: var(--lavender);
+        }
+
+        .cart {
+            border: 1px solid var(--lavender);
+            padding: 8px 16px;
+            border-radius: 30px;
+        }
+
+        /* HERO SECTION */
+
+        .hero {
+            min-height: 470px;
+            padding: 90px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            background:
+                radial-gradient(circle at 80% 30%, #49376D 0%, transparent 35%);
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .tag {
+            color: var(--mint);
+            font-size: 13px;
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 6vw, 65px);
+            line-height: 1.15;
+            margin: 20px 0;
+        }
+
+        .hero h1 span {
+            color: var(--lavender);
+        }
+
+        .hero p {
+            color: var(--muted);
+            max-width: 450px;
+            margin-bottom: 30px;
+        }
+
+        .hero-art {
+            font-size: 125px;
+            padding: 30px;
+            border-radius: 40px;
+            background: linear-gradient(135deg, #302747, #202C45);
+            transform: rotate(5deg);
+        }
+
+        /* BUTTONS */
+
+        .btn {
+            display: inline-block;
+            background: var(--lavender);
+            color: var(--navy);
+            text-decoration: none;
+            padding: 13px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--mint);
+            transform: translateY(-3px);
+        }
+
+        /* GENERAL SECTIONS */
+
+        .section {
+            padding: 75px 8%;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-heading h2 {
+            font-size: 32px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        .highlight {
+            color: var(--lavender);
+        }
+
+        /* CATEGORY CARDS */
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .category {
+            background: var(--card);
+            border: 1px solid #30394D;
+            border-radius: 20px;
+            padding: 30px 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .category:hover {
+            transform: translateY(-6px);
+            border-color: var(--lavender);
+        }
+
+        .category .emoji {
+            font-size: 45px;
+        }
+
+        .category h3 {
+            margin-top: 12px;
+            font-size: 17px;
+        }
+
+        /* PRODUCTS */
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .product {
+            background: var(--card);
+            border: 1px solid #30394D;
+            border-radius: 20px;
+            padding: 15px;
+            transition: 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-7px);
+            border-color: var(--lavender);
+        }
+
+        .product-image {
+            height: 190px;
+            background: linear-gradient(135deg, #EEE8FF, #D9F9EF);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 75px;
+            margin-bottom: 18px;
+        }
+
+        .product h3 {
+            font-size: 17px;
+        }
+
+        .product .description {
+            color: var(--muted);
+            font-size: 12px;
+            margin: 5px 0 12px;
+        }
+
+        .product-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            color: var(--mint);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .add-btn {
+            background: var(--lavender);
+            color: var(--navy);
+            border: none;
+            padding: 9px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        /* CUSTOM ORDER BANNER */
+
+        .custom {
+            margin: 20px 8% 70px;
+            padding: 45px 25px;
+            border-radius: 25px;
+            text-align: center;
+            background: linear-gradient(120deg, #33264F, #1B3940);
+        }
+
+        .custom h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .custom p {
+            color: #D1D5DB;
+            margin-bottom: 22px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #0B101B;
+            padding: 45px 8% 20px;
+            border-top: 1px solid #283044;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        footer h2 {
+            color: var(--lavender);
+            margin-bottom: 10px;
+        }
+
+        footer p, footer a {
+            color: var(--muted);
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #283044;
+            padding-top: 20px;
+            margin-top: 35px;
+        }
+
+        /* MOBILE DESIGN */
+
+        @media (max-width: 700px) {
+            nav {
+                padding: 15px 5%;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 65px 6%;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-art {
+                font-size: 85px;
+            }
+
+            .section {
+                padding: 55px 5%;
+            }
+
+            .categories {
+                grid-template-columns: 1fr;
+            }
+
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .product {
+                padding: 10px;
+            }
+
+            .product-image {
+                height: 130px;
+                font-size: 55px;
+            }
+
+            .product h3 {
+                font-size: 14px;
+            }
+
+            .add-btn {
+                padding: 8px 10px;
+                font-size: 11px;
+            }
+
+            .custom {
+                margin: 10px 5% 50px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .products {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="logo">STICKVERSE ✦</div>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#categories">Categories</a>
+            <a href="#shop">Shop</a>
+            <a href="#about">About</a>
+            <a href="#shop" class="cart">
+                Cart (<span id="cart-count">0</span>)
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+
+    <header class="hero" id="home">
+        <div class="hero-content">
+            <div class="tag">YOUR PERSONAL STICKER WORLD</div>
+
+            <h1>MAKE YOUR WORLD <span>STICK!</span></h1>
+
+            <p>
+                Express yourself with stickers that match your personality.
+                Discover unique designs and make everyday things yours.
+            </p>
+
+            <a href="#shop" class="btn">EXPLORE COLLECTION →</a>
+        </div>
+
+        <div class="hero-art">✨🎨</div>
+    </header>
+
+    <!-- CATEGORIES -->
+
+    <section class="section" id="categories">
+
+        <div class="section-heading">
+            <h2>Explore <span class="highlight">Categories</span></h2>
+            <p>Find your favourite sticker style.</p>
+        </div>
+
+        <div class="categories">
+
+            <div class="category">
+                <div class="emoji">🌸</div>
+                <h3>Aesthetic</h3>
+            </div>
+
+            <div class="category">
+                <div class="emoji">🎮</div>
+                <h3>Gaming</h3>
+            </div>
+
+            <div class="category">
+                <div class="emoji">🏎️</div>
+                <h3>Automotive</h3>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PRODUCTS -->
+
+    <section class="section" id="shop">
+
+        <div class="section-heading">
+            <h2>Our <span class="highlight">Best Sellers</span></h2>
+            <p>Small stickers. Big vibes.</p>
+        </div>
+
+        <div class="products">
+
+            <div class="product">
+                <div class="product-image">⚡</div>
+                <h3>Lightning Vibes</h3>
+                <p class="description">Bold energy, everyday style.</p>
+
+                <div class="product-bottom">
+                    <span class="price">₹29</span>
+                    <button class="add-btn" onclick="addToCart()">Add +</button>
+                </div>
+            </div>
+
+            <div class="product">
+                <div class="product-image">🎮</div>
+                <h3>Gaming Mood</h3>
+                <p class="description">For the gaming generation.</p>
+
+                <div class="product-bottom">
+                    <span class="price">₹29</span>
+                    <button class="add-btn" onclick="addToCart()">Add +</button>
+                </div>
+            </div>
+
+            <div class="product">
+                <div class="product-image">🚀</div>
+                <h3>Space Explorer</h3>
+                <p class="description">Take your style beyond limits.</p>
+
+                <div class="product-bottom">
+                    <span class="price">₹29</span>
+                    <button class="add-btn" onclick="addToCart()">Add +</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CUSTOM ORDERS -->
+
+    <section class="custom">
+        <h2>Want Something <span class="highlight">Personal?</span></h2>
+
+        <p>
+            Your idea. Your design. Your sticker.
+            Get a custom sticker made just for you.
+        </p>
+<a class="btn"
+   href="https://wa.me/918010519354?text=Hello%20STICKVERSE%21%20I%20want%20a%20custom%20sticker."
+   ORDER CUSTOM STICKERS
+</a>
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer id="about">
+
+        <div class="footer-content">
+
+            <div>
+                <h2>STICKVERSE ✦</h2>
+                <p>YOUR WORLD. YOUR STICKERS.</p>
+                <p>Small stickers. Big vibes.</p>
+            </div>
+
+            <div>
+                <h3>Explore</h3>
+                <p><a href="#home">Home</a></p>
+                <p><a href="#categories">Categories</a></p>
+                <p><a href="#shop">Shop</a></p>
+            </div>
+
+            <div>
+                <h3>Contact</h3>
+                <p>Have an idea? Let's create it!</p>
+                <p><a href="https://wa.me/" target="_blank">WhatsApp Us</a></p>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            <p>© 2026 STICKVERSE. All rights reserved.</p>
+        </div>
+
+    </footer>
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+        let cartCount = 0;
+
+        function addToCart() {
+            cartCount++;
+
+            document.getElementById("cart-count").textContent = cartCount;
+
+            alert("Sticker added to your cart!");
+        }
+    </script>
+
+</body>
+</html>
